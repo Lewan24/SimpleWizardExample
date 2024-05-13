@@ -1,0 +1,16 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+@inject NavigationManager _nav
+
+<h4 class="text-center">Witaj! Kliknij poniższy przycisk aby rozpocząć proces wizarda.</h4>
+
+<div class="d-flex flex-row justify-content-center">
+    <button class="btn btn-primary mt-2" @onclick="GotoWizardStartup">Rozpocznij</button>
+</div>
+
+@{
+    void GotoWizardStartup()
+        => _nav.NavigateTo("WizardStartup", false);
+}

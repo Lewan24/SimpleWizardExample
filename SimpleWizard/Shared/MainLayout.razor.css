@@ -1,0 +1,32 @@
+header {
+    border-bottom: 1px solid #d6d5d5;
+    justify-content: center;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.main-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    border-bottom: 1px solid #d6d5d5;
+    justify-content: center;
+    height: 3.5rem;
+    width: -moz-available;
+
+    align-content: center;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.bgdark {
+    background-color: #222;
+}

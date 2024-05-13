@@ -1,0 +1,36 @@
+﻿@page "/WizardContent"
+
+@using SimpleWizard.Data.Entities
+@using SimpleWizard.Data.Entities.Enums
+@using SimpleWizard.Pages.Steps
+
+@inject WizardService _wizard
+
+<article>
+    @switch (_wizard.CurrentStep)
+    {
+        case WizardStep.Step1:
+            <Step1View />
+            break;
+
+        case WizardStep.Step2:
+            <Step2View />
+            break;
+
+        case WizardStep.End:
+            <WizardEndView />
+            break;
+    }
+</article>
+
+@code{
+    protected override void OnInitialized()
+    {
+        _wizard.OnStepUpdated += HandleStepUpdated;
+    }
+
+    private void HandleStepUpdated()
+    {
+        StateHasChanged();
+    }
+}

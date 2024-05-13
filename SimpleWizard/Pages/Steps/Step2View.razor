@@ -1,0 +1,38 @@
+﻿@using SimpleWizard.Data.Entities
+@using SimpleWizard.Data.Entities.Steps
+@using SimpleWizard.Data.Entities.Steps.Interfaces
+
+@inject WizardService _wizard
+
+<EditForm Model="_step" OnValidSubmit="SaveAndGotoNextStep" class="card mt-4">
+    <DataAnnotationsValidator />
+
+    <h5 class="text-center card-header">Formularz nr @_step.Id</h5>
+    <h5 class="text-center card-title mt-2">@_step.FormTitle</h5>
+
+    <div class="card-body">
+        <label>
+            Nazwisko:
+            <InputText @bind-Value="_step.LastName" />
+        </label>
+    </div>
+
+    <div class="d-flex flex-row justify-content-end px-3">
+        <button class="btn btn-success my-2" type="submit">Przejdź dalej</button>
+    </div>
+
+    <div class="card-footer">
+        <ValidationSummary />
+    </div>
+</EditForm>
+
+@code {
+    private Step2 _step = new Step2();
+
+    private void SaveAndGotoNextStep()
+    {
+        _wizard.AddStep(_step);
+        _wizard.ChangeCurrentState(_step);
+    }
+}
+
