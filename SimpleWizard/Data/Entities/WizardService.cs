@@ -1,6 +1,7 @@
 ﻿using SimpleWizard.Data.Entities.Enums;
 using SimpleWizard.Data.Entities.Steps;
 using SimpleWizard.Data.Entities.Steps.Interfaces;
+using System.Text;
 
 namespace SimpleWizard.Data.Entities;
 
@@ -39,12 +40,22 @@ public sealed class WizardService
         OnStepUpdated?.Invoke();
     }
 
+    public void EndWizard()
+    {
+        CurrentStep = WizardStep.Invalid;
+    }
+
     public void ShowWizardStepsInConsole()
     {
         var sortedSteps = _steps.OrderBy(x => x.Id)
                             .Distinct()
                             .ToList();
 
-        _logger.LogInformation($"Current steps: \nStep 1: First Name - {(sortedSteps[0] as Step1)?.FirstName}\nStep 2: Last Name - {(sortedSteps[1] as Step2)?.LastName}");
+        StringBuilder stepsInfo = new StringBuilder();
+
+        foreach (var step in sortedSteps)
+            stepsInfo.AppendLine($"Step {step.Id}.:\n{(step as IStepLog)?.GetInfo()}\n");
+
+        _logger.LogInformation($"Current steps information:\n{stepsInfo}");
     }
 }

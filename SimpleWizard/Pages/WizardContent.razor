@@ -26,6 +26,9 @@
 @code{
     protected override void OnInitialized()
     {
+        if (_wizard.CurrentStep is WizardStep.Invalid)
+            _wizard.ResetToDefault();
+
         _wizard.OnStepUpdated += HandleStepUpdated;
     }
 

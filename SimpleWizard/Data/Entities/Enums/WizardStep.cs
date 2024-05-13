@@ -4,5 +4,6 @@ public enum WizardStep
 {
     Step1,
     Step2,
-    End
+    End,
+    Invalid
 }

@@ -10,10 +10,20 @@
     <h5 class="text-center card-header">Formularz nr @_step.Id</h5>
     <h5 class="text-center card-title mt-2">@_step.FormTitle</h5>
 
-    <div class="card-body">
+    <div class="card-body d-flex flex-column">
         <label>
-            Imię:
+            Imię: <br />
             <InputText @bind-Value="_step.FirstName" />
+        </label>
+
+        <label class="my-3">
+            Nazwisko:<br />
+            <InputText @bind-Value="_step.LastName" />
+        </label>
+
+        <label>
+            Wiek:<br />
+            <InputNumber @bind-Value="_step.Age" />
         </label>
     </div>
 

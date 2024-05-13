@@ -10,10 +10,10 @@
     <h5 class="text-center card-header">Formularz nr @_step.Id</h5>
     <h5 class="text-center card-title mt-2">@_step.FormTitle</h5>
 
-    <div class="card-body">
+    <div class="card-body d-flex flex-column">
         <label>
-            Nazwisko:
-            <InputText @bind-Value="_step.LastName" />
+            Numer Telefonu:<br />
+            <InputText @bind-Value="_step.PhoneNumber" />
         </label>
     </div>
 
