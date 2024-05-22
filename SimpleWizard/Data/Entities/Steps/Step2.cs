@@ -1,4 +1,5 @@
-﻿using SimpleWizard.Data.Entities.Enums;
+﻿using DataAnnotationsExtensions;
+using SimpleWizard.Data.Entities.Enums;
 using SimpleWizard.Data.Entities.Steps.Interfaces;
 using System.ComponentModel.DataAnnotations;
 
@@ -7,17 +8,27 @@ namespace SimpleWizard.Data.Entities.Steps;
 public sealed class Step2 : IStepBase
 {
     public int Id => 2;
-    public string FormTitle => "Dane dodatkowe";
+    public string FormTitle => "Formularz sprzedaży samochodu";
 
-    [StringLength(9)]
+    [Min(0)]
     [Required]
-    public string PhoneNumber { get; set; }
+    public int Przebieg { get; set; }
+
+    [MinLength(4)]
+    [MaxLength(40)]
+    [Required]
+    public string Wyposazenie { get; set; }
+
+    [MinLength(4)]
+    [MaxLength(40)]
+    [Required]
+    public string Lokalizacja { get; set; }
 
     string IStepLog.GetInfo()
     {
-        return $"Numer telefonu: {PhoneNumber}";
+        return $"Przebieg: {Przebieg}\nWyposażenie: {Wyposazenie}\nLokalizacja: {Lokalizacja}";
     }
 
     WizardStep INextStep.GetNextStep()
-        => Enums.WizardStep.End;
+        => Enums.WizardStep.Step3;
 }

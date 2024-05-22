@@ -1,10 +1,12 @@
-﻿@page "/WizardContent"
+﻿@page "/formularz-sprzedaz-auta"
 
 @using SimpleWizard.Data.Entities
 @using SimpleWizard.Data.Entities.Enums
 @using SimpleWizard.Pages.Steps
 
 @inject WizardService _wizard
+
+<PageTitle>Formularz - sprzedaż auta</PageTitle>
 
 <article>
     @switch (_wizard.CurrentStep)
@@ -15,6 +17,10 @@
 
         case WizardStep.Step2:
             <Step2View />
+            break;
+
+        case WizardStep.Step3:
+            <Step3View />
             break;
 
         case WizardStep.End:

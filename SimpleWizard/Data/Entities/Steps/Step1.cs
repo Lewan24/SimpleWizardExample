@@ -8,26 +8,29 @@ namespace SimpleWizard.Data.Entities.Steps;
 public sealed class Step1 : IStepBase
 {
     public int Id => 1;
-    public string FormTitle => "Dane Podstawowe";
+    public string FormTitle => "Ogólne";
 
     [MinLength(4)]
-    [MaxLength(40)]
+    [MaxLength(50)]
     [Required]
-    public string FirstName { get; set; }
+    public string NazwaOgłoszenia { get; set; }
 
-    [MinLength(4)]
-    [MaxLength(40)]
+    [MaxLength(15)]
     [Required]
-    public string LastName { get; set; }
+    public string Marka { get; set; }
 
-    [Min(18)]
-    [Max(100)]
+    [MaxLength(15)]
     [Required]
-    public int Age { get; set; }
+    public string Model { get; set; }
+
+    [Min(1)]
+    [Max(1_000_000)]
+    [Required]
+    public int Cena { get; set; }
 
     string IStepLog.GetInfo()
     {
-        return $"Imie: {FirstName}\nNazwisko: {LastName}\nWiek: {Age}";
+        return $"Nazwa Ogłoszenia: {NazwaOgłoszenia}\nMarka i model: {Marka}, {Model}\nCena wywoławcza: {Cena} zł";
     }
 
     WizardStep INextStep.GetNextStep()

@@ -4,6 +4,7 @@
 
 @inject WizardService _wizard
 
+
 <EditForm Model="_step" OnValidSubmit="SaveAndGotoNextStep" class="card mt-4">
     <DataAnnotationsValidator />
 
@@ -12,13 +13,23 @@
 
     <div class="card-body d-flex flex-column">
         <label>
-            Numer Telefonu:<br />
-            <InputText @bind-Value="_step.PhoneNumber" />
+            Przebieg: <br />
+            <InputNumber @bind-Value="_step.Przebieg" />
+        </label>
+
+        <label class="my-3">
+            Wyposazenie:<br />
+            <InputText @bind-Value="_step.Wyposazenie" />
+        </label>
+
+        <label>
+            Lokalizacja:<br />
+            <InputText @bind-Value="_step.Lokalizacja" />
         </label>
     </div>
 
     <div class="d-flex flex-row justify-content-end px-3">
-        <button class="btn btn-success my-2" type="submit">Przejdź dalej</button>
+        <button class="btn btn-success my-2" type="submit">Kontynuuj</button>
     </div>
 
     <div class="card-footer">
